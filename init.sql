@@ -1,0 +1,23 @@
+CREATE TABLE Homework (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Lesson (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    updatedAt DATE NOT NULL,
+    homework_id INT NOT NULL REFERENCES Homework (id)
+);
+
+CREATE TABLE Schedule (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    updatedAt DATE NOT NULL
+);
+
+CREATE TABLE Lesson_Ref (
+    lesson_id INT NOT NULL REFERENCES Lesson (id),
+    schedule_id INT NOT NULL REFERENCES Schedule (id)
+);
